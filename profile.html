@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id" style="scroll-behavior: smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Usaha - Dapur Kya</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <style>
+      :root {
+        /* PALET WARNA KONSISTEN */
+        --brand-primary: #ff0a54;
+        --brand-secondary: #fb6f92;
+        --brand-hover: #d00043;
+        --brand-light: #ffe5ec;
+        --brand-mid: #ff8fab;
+      }
+
+      body {
+        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        background-color: #f9fafb;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      /* --- UTILITIES --- */
+      .text-brand-primary {
+        color: var(--brand-primary) !important;
+      }
+      .bg-brand-primary {
+        background-color: var(--brand-primary) !important;
+      }
+      .bg-brand-light {
+        background-color: var(--brand-light) !important;
+      }
+
+      /* --- HOVER TEXT EFFECT (ZOOM + PINK) --- */
+      .hover-text-pink {
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: inline-block;
+        cursor: pointer;
+      }
+      .hover-text-pink:hover {
+        transform: scale(1.1);
+        color: var(--brand-primary) !important;
+        text-shadow: 0 2px 10px rgba(255, 10, 84, 0.2);
+      }
+      /* Khusus link footer agar gesernya tidak terlalu jauh */
+      ul li a.hover-text-pink:hover {
+        transform: scale(1.05) translateX(5px);
+      }
+
+      /* --- ANIMATED FOOTER HIGHLIGHT --- */
+      .footer-animated {
+        position: relative;
+        background: linear-gradient(to bottom, #ffffff, #fff0f3);
+      }
+      .footer-animated::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          var(--brand-primary),
+          var(--brand-secondary),
+          #ffd166,
+          var(--brand-secondary),
+          var(--brand-primary)
+        );
+        background-size: 200% 100%;
+        animation: borderShimmer 3s linear infinite;
+        z-index: 10;
+      }
+      @keyframes borderShimmer {
+        0% {
+          background-position: 0% 0%;
+        }
+        100% {
+          background-position: 200% 0%;
+        }
+      }
+
+      /* Navbar Logo Font */
+      .logo-text {
+        font-family: "Arial Black", sans-serif;
+        letter-spacing: -1px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Smooth Scroll Reveal Animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Hover Cards */
+      .profile-card {
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 10, 84, 0.1);
+      }
+      .profile-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border-color: var(--brand-secondary);
+      }
+
+      /* --- BUTTONS --- */
+      .btn-brand {
+        background-color: var(--brand-primary);
+        color: white;
+        border: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .btn-brand:hover {
+        background-color: var(--brand-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -5px rgba(255, 10, 84, 0.4);
+      }
+    </style>
+  </head>
+
+  <body class="flex flex-col min-h-screen">
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-brand-primary sticky-top shadow-lg z-50 backdrop-blur-md bg-opacity-95"
+    >
+      <div class="container d-flex justify-content-between align-items-center">
+        <a
+          class="navbar-brand me-4 d-flex align-items-center gap-2"
+          href="index.html"
+        >
+          <div
+            class="bg-white rounded-circle p-1 d-flex justify-content-center align-items-center shadow-md transform transition hover:rotate-12"
+            style="width: 40px; height: 40px"
+          >
+            <i class="fa-solid fa-fire-burner text-brand-primary fs-4"></i>
+          </div>
+          <span
+            class="logo-text text-white text-xl uppercase italic tracking-wider"
+            >DAPUR KYA</span
+          >
+        </a>
+
+        <a
+          href="index.html"
+          class="btn bg-white text-brand-primary fw-bold shadow-md rounded-full px-4 py-2 hover:bg-gray-50 transition transform hover:scale-105 flex items-center gap-2"
+        >
+          <i class="fa-solid fa-arrow-left"></i> Kembali Belanja
+        </a>
+      </div>
+    </nav>
+
+    <header class="relative py-20 overflow-hidden reveal active">
+      <div
+        class="absolute inset-0"
+        style="
+          background: linear-gradient(
+            135deg,
+            var(--brand-light) 0%,
+            #fff0f3 100%
+          );
+          z-index: -1;
+        "
+      ></div>
+      <div
+        class="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-brand-mid rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 -mb-10 -ml-10 w-64 h-64 bg-brand-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"
+      ></div>
+
+      <div class="container text-center">
+        <span
+          class="badge bg-brand-secondary text-white px-3 py-2 rounded-full mb-3 shadow-sm uppercase tracking-widest text-xs font-bold"
+          >Tentang Kami</span
+        >
+        <h1 class="display-4 fw-bold text-gray-800 mb-4">
+          Mengenal Lebih Dekat <span class="text-brand-primary">Dapur Kya</span>
+        </h1>
+        <p class="lead text-muted max-w-2xl mx-auto">
+          Menghadirkan cita rasa kuliner otentik dengan bahan berkualitas
+          tinggi, disajikan dengan cinta untuk keluarga Indonesia sejak 2025.
+        </p>
+      </div>
+    </header>
+
+    <section class="py-5 reveal">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="position-relative">
+              <img
+                src="./images/coverprofile.jpg"
+                class="img-fluid rounded-3xl shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500"
+                alt="Foto Dapur"
+              />
+              <div
+                class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-lg border border-pink-100"
+              >
+                <div class="d-flex align-items-center gap-3">
+                  <div
+                    class="bg-brand-light p-3 rounded-circle text-brand-primary"
+                  >
+                    <i class="fa-solid fa-users fs-4"></i>
+                  </div>
+                  <div>
+                    <h5 class="m-0 fw-bold">10.000+</h5>
+                    <small class="text-muted">Pelanggan Puas</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <h2 class="fw-bold text-3xl mb-4 text-gray-800">
+              Cerita Perjalanan Kami
+            </h2>
+
+            <p class="text-muted leading-relaxed mb-3">
+              <strong>Dapur Kya resmi berdiri pada tahun 2025</strong>, lahir
+              dari keinginan sederhana untuk menghadirkan kehangatan masakan
+              rumah di tengah kesibukan era modern. Apa yang bermula dari dapur
+              kecil dengan resep warisan keluarga, kini telah bertransformasi
+              menjadi pelopor kuliner yang memadukan
+              <em>cita rasa autentik</em> dengan pelayanan digital yang praktis.
+            </p>
+
+            <p class="text-muted leading-relaxed mb-4">
+              Sejak hari pertama, filosofi kami tidak pernah berubah:
+              <strong>"Kualitas adalah Prioritas"</strong>. Kami berkomitmen
+              bahwa setiap piring yang tersaji adalah hasil dari bahan-bahan
+              pilihan yang segar, diolah dengan standar kebersihan tertinggi,
+              dan disajikan dengan penuh cinta. Bagi kami, Dapur Kya bukan
+              sekadar tempat makan, melainkan tempat di mana setiap suapan
+              menciptakan kenangan manis bagi pelanggan kami.
+            </p>
+
+            <div class="d-flex gap-4 mt-4">
+              <div>
+                <h4 class="fw-bold text-brand-primary text-2xl">100%</h4>
+                <span class="text-sm text-gray-500">Bahan Halal</span>
+              </div>
+              <div>
+                <h4 class="fw-bold text-brand-primary text-2xl">24/7</h4>
+                <span class="text-sm text-gray-500">Layanan</span>
+              </div>
+              <div>
+                <h4 class="fw-bold text-brand-primary text-2xl">50+</h4>
+                <span class="text-sm text-gray-500">Menu Spesial</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-brand-light/30 reveal">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="bg-white p-5 rounded-3xl shadow-sm profile-card h-100">
+              <div
+                class="bg-brand-light w-16 h-16 rounded-2xl flex items-center justify-center mb-4 text-brand-primary"
+              >
+                <i class="fa-solid fa-bullseye fs-3"></i>
+              </div>
+              <h3 class="fw-bold text-xl mb-3">Visi Kami</h3>
+              <p class="text-muted">
+                Menjadi brand kuliner pilihan utama keluarga Indonesia yang
+                dikenal karena kualitas rasa, kebersihan, dan pelayanan yang
+                ramah.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="bg-white p-5 rounded-3xl shadow-sm profile-card h-100">
+              <div
+                class="bg-brand-light w-16 h-16 rounded-2xl flex items-center justify-center mb-4 text-brand-primary"
+              >
+                <i class="fa-solid fa-rocket fs-3"></i>
+              </div>
+              <h3 class="fw-bold text-xl mb-3">Misi Kami</h3>
+              <ul class="list-unstyled text-muted space-y-2">
+                <li>
+                  <i class="fa-solid fa-check text-brand-secondary me-2"></i>
+                  Menyajikan menu inovatif dan variatif.
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-brand-secondary me-2"></i>
+                  Menjaga standar kebersihan tertinggi.
+                </li>
+                <li>
+                  <i class="fa-solid fa-check text-brand-secondary me-2"></i>
+                  Memberikan harga terbaik dengan kualitas premium.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pt-5 pb-3 border-top mt-auto reveal footer-animated">
+      <div class="container">
+        <div class="row g-4 justify-content-between">
+          <div class="col-lg-3 col-md-6">
+            <a
+              class="navbar-brand d-flex align-items-center gap-2 mb-3"
+              href="index.html"
+            >
+              <i class="fa-solid fa-fire-burner text-brand-primary fs-3"></i>
+              <span class="logo-text text-dark text-xl uppercase italic"
+                >DAPUR KYA</span
+              >
+            </a>
+            <p class="text-muted text-sm mb-4 leading-relaxed">
+              Pusat kuliner dan belanja terbaik dengan cita rasa otentik.
+              Nikmati hidangan lezat dan segar setiap hari.
+            </p>
+            <div class="d-flex gap-2">
+              <a
+                href="#"
+                class="btn btn-outline-secondary btn-sm rounded-circle border-0 bg-gray-200 text-gray-600 transition hover:bg-brand-primary hover:text-white"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                class="btn btn-outline-secondary btn-sm rounded-circle border-0 bg-gray-200 text-gray-600 transition hover:bg-brand-primary hover:text-white"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                ><i class="fa-brands fa-twitter"></i
+              ></a>
+              <a
+                href="#"
+                class="btn btn-outline-secondary btn-sm rounded-circle border-0 bg-gray-200 text-gray-600 transition hover:bg-brand-primary hover:text-white"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 col-6">
+            <h5 class="fw-bold text-dark mb-3 text-base">Navigasi</h5>
+            <ul
+              class="list-unstyled d-flex flex-column gap-2 text-sm text-muted"
+            >
+              <li>
+                <a
+                  href="index.html"
+                  class="text-decoration-none text-muted hover-text-pink"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="profile.html"
+                  class="text-decoration-none text-brand-primary fw-bold hover-text-pink"
+                  >Profil Usaha</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-3 col-6">
+            <h5 class="fw-bold text-dark mb-3 text-base">Layanan</h5>
+            <ul
+              class="list-unstyled d-flex flex-column gap-2 text-sm text-muted"
+            >
+              <li>
+                <a
+                  href="#"
+                  class="text-decoration-none text-muted hover-text-pink"
+                  >Pusat Bantuan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-decoration-none text-muted hover-text-pink"
+                  >Hubungi Kami</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-12">
+            <h5 class="fw-bold text-dark mb-3 text-base">Berlangganan</h5>
+            <div
+              class="input-group mb-3 shadow-sm rounded-pill overflow-hidden border border-gray-200"
+            >
+              <input
+                type="email"
+                class="form-control bg-white border-0 ps-4 focus:ring-0"
+                placeholder="Alamat Email..."
+              />
+              <button class="btn btn-dark fw-bold px-4" type="button">
+                Kirim
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4 text-gray-300" />
+
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center text-sm text-muted"
+        >
+          <p class="mb-2 mb-md-0">
+            &copy; 2025 <strong class="text-brand-primary">Dapur Kya</strong>.
+            All rights reserved.
+          </p>
+          <span class="text-xs"
+            >Made with
+            <i
+              class="fa-solid fa-heart text-danger animate__animated animate__heartBeat animate__infinite"
+            ></i>
+            in Indonesia</span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => revealObserver.observe(el));
+    </script>
+  </body>
+</html>
